@@ -26,6 +26,10 @@ module.exports = {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'sitenou2.bjctools.ro',
+      },
     ],
   },
 };
