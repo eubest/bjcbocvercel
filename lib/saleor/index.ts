@@ -127,7 +127,7 @@ export async function getPage(handle: string): Promise<Page> {
   };
 }
 
-export async function getProduct(handle: string): Promise<Product | undefined> {
+export async function getProduct(handle: string): Promise<Product | null> {
   const saleorProduct = await saleorFetch({
     query: GetProductBySlugDocument,
     variables: {
@@ -164,7 +164,7 @@ const _getCategory = async (handle: string) =>
     })
   ).category;
 
-export async function getCollection(handle: string): Promise<Collection | undefined> {
+export async function getCollection(handle: string): Promise<Collection | null> {
   const saleorCollection = (await _getCollection(handle)) || (await _getCategory(handle));
 
   if (!saleorCollection) {
@@ -240,7 +240,7 @@ export async function getCollectionProducts({
   reverse?: boolean;
   sortKey?: ProductOrderField;
 }): Promise<Product[]> {
-  if (typeof reverse === 'undefined' && typeof sortKey === 'undefined') {
+  if (typeof reverse === 'null' && typeof sortKey === 'null') {
     reverse = true;
     sortKey = ProductOrderField.Name;
   }
@@ -306,9 +306,9 @@ export async function getMenu(handle: string): Promise<Menu[]> {
 }
 
 type MenuItemWithChildren = MenuItemFragment & {
-  children?: null | undefined | MenuItemWithChildren[];
+  children?: null | null | MenuItemWithChildren[];
 };
-function flattenMenuItems(menuItems: null | undefined | MenuItemWithChildren[]): Menu[] {
+function flattenMenuItems(menuItems: null | null | MenuItemWithChildren[]): Menu[] {
   return (
     menuItems?.flatMap((item) => {
       // Remove empty categories and collections from menu
@@ -324,17 +324,17 @@ function flattenMenuItems(menuItems: null | undefined | MenuItemWithChildren[]):
         (item.collection
           ? `/search/${item.collection.slug}`
           : item.category
-          ? `/search/${item.category.slug}`
-          : '');
+            ? `/search/${item.category.slug}`
+            : '');
 
       return [
         ...(path
           ? [
-              {
-                path: path,
-                title: item.name,
-              },
-            ]
+            {
+              path: path,
+              title: item.name,
+            },
+          ]
           : []),
         ...flattenMenuItems(item.children),
       ];
@@ -358,8 +358,8 @@ export async function getProducts({
       sortBy: query
         ? sortKey || ProductOrderField.Rank
         : sortKey === ProductOrderField.Rank
-        ? ProductOrderField.Rating
-        : sortKey || ProductOrderField.Rating,
+          ? ProductOrderField.Rating
+          : sortKey || ProductOrderField.Rating,
       sortDirection: reverse ? OrderDirection.Desc : OrderDirection.Asc,
     },
     tags: [TAGS.products],

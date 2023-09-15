@@ -29,7 +29,7 @@ export default async function CategoryPage({
   searchParams,
 }: {
   params: { collection: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | null };
 }) {
   const { sort } = searchParams as { [key: string]: string };
   const { sortKey, reverse } = sorting.find((item) => item.slug === sort) || defaultSort;
