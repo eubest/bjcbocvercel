@@ -28,7 +28,7 @@ export const addItem = async (variantId: string | undefined): Promise<String | u
   }
 };
 
-export const removeItem = async (lineId: string): Promise<String | null> => {
+export const removeItem = async (lineId: string): Promise<String | undefined> => {
   const cartId = cookies().get('cartId')?.value;
 
   if (!cartId) {
