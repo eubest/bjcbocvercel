@@ -3,7 +3,7 @@
 import { addToCart, createCart, getCart, removeFromCart, updateCart } from 'lib/saleor';
 import { cookies } from 'next/headers';
 
-export const addItem = async (variantId: string | null): Promise<String | null> => {
+export const addItem = async (variantId: string | undefined): Promise<String | undefined> => {
   let cartId = cookies().get('cartId')?.value;
   let cart;
 
