@@ -29,7 +29,7 @@ export function AddToCart({
     ? 'Out of stock'
     : !selectedVariantId
       ? 'Please select options'
-      : null;
+      : undefined;
 
   return (
     <button
