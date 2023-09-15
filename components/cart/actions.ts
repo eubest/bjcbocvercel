@@ -49,7 +49,7 @@ export const updateItemQuantity = async ({
   lineId: string;
   variantId: string;
   quantity: number;
-}): Promise<String | null> => {
+}): Promise<String | undefined> => {
   const cartId = cookies().get('cartId')?.value;
 
   if (!cartId) {
