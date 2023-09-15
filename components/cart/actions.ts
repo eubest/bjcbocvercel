@@ -28,7 +28,7 @@ export const addItem = async (variantId: string | null): Promise<String | undefi
   }
 };
 
-export const removeItem = async (lineId: string): Promise<String | null> => {
+export const removeItem = async (lineId: string): Promise<String | undefined> => {
   const cartId = cookies().get('cartId')?.value;
 
   if (!cartId) {
@@ -49,7 +49,7 @@ export const updateItemQuantity = async ({
   lineId: string;
   variantId: string;
   quantity: number;
-}): Promise<String | null> => {
+}): Promise<String | undefined> => {
   const cartId = cookies().get('cartId')?.value;
 
   if (!cartId) {
