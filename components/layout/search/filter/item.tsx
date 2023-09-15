@@ -50,7 +50,7 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
   return (
     <li className="mt-2 flex text-sm text-black dark:text-white" key={item.title}>
       <DynamicTag
-        prefetch={!active ? false : null}
+        prefetch={!active ? false : undefined}
         href={href}
         className={clsx('w-full hover:underline hover:underline-offset-4', {
           'underline underline-offset-4': active,
