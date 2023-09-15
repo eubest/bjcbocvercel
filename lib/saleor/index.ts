@@ -396,7 +396,7 @@ export async function getPages(): Promise<Page[]> {
   );
 }
 
-export async function getCart(cartId: string): Promise<Cart | undefined> {
+export async function getCart(cartId: string): Promise<Cart | null> {
   const saleorCheckout = await saleorFetch({
     query: GetCheckoutByIdDocument,
     variables: {
