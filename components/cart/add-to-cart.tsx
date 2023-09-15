@@ -18,7 +18,7 @@ export function AddToCart({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
-  const defaultVariantId = variants.length === 1 ? variants[0]?.id : null;
+  const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
   const variant = variants.find((variant: ProductVariant) =>
     variant.selectedOptions.every(
       (option) => option.value === searchParams.get(option.name.toLowerCase()),
@@ -29,7 +29,7 @@ export function AddToCart({
     ? 'Out of stock'
     : !selectedVariantId
       ? 'Please select options'
-      : null;
+      : undefined;
 
   return (
     <button
