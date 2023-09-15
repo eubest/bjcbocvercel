@@ -240,7 +240,7 @@ export async function getCollectionProducts({
   reverse?: boolean;
   sortKey?: ProductOrderField;
 }): Promise<Product[]> {
-  if (typeof reverse === 'null' && typeof sortKey === 'null') {
+  if (typeof reverse === 'undefined' && typeof sortKey === 'undefined') {
     reverse = true;
     sortKey = ProductOrderField.Name;
   }
@@ -306,9 +306,9 @@ export async function getMenu(handle: string): Promise<Menu[]> {
 }
 
 type MenuItemWithChildren = MenuItemFragment & {
-  children?: null | null | MenuItemWithChildren[];
+  children?: null | undefined | MenuItemWithChildren[];
 };
-function flattenMenuItems(menuItems: null | null | MenuItemWithChildren[]): Menu[] {
+function flattenMenuItems(menuItems: null | undefined | MenuItemWithChildren[]): Menu[] {
   return (
     menuItems?.flatMap((item) => {
       // Remove empty categories and collections from menu

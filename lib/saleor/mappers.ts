@@ -3,7 +3,7 @@ import { parseEditorJsToHtml } from './editorjs';
 import { CheckoutFragment, GetProductBySlugQuery, VariantFragment } from './generated/graphql';
 
 export function saleorProductToVercelProduct(
-  product: Exclude<GetProductBySlugQuery['product'], null | null>,
+  product: Exclude<GetProductBySlugQuery['product'], null | undefined>,
 ): Product {
   const images =
     product.media
@@ -47,7 +47,7 @@ export function saleorProductToVercelProduct(
   };
 }
 
-export function saleorVariantsToVercelOptions(variants: VariantFragment[] | null | null) {
+export function saleorVariantsToVercelOptions(variants: VariantFragment[] | null | undefined) {
   return (
     variants
       ?.flatMap((variant) => {
@@ -69,8 +69,8 @@ export function saleorVariantsToVercelOptions(variants: VariantFragment[] | null
 }
 
 export function saleorVariantsToVercelVariants(
-  variants: null | null | VariantFragment[],
-  isAvailableForPurchase: null | null | boolean,
+  variants: null | undefined | VariantFragment[],
+  isAvailableForPurchase: null | undefined | boolean,
 ): Product['variants'] {
   return (
     variants?.map((variant) => {

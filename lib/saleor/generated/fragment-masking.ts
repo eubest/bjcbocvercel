@@ -17,8 +17,8 @@ export function useFragment<TType>(
 // return nullable if `fragmentType` is nullable
 export function useFragment<TType>(
   _documentNode: DocumentTypeDecoration<TType, any>,
-  fragmentType: FragmentType<DocumentTypeDecoration<TType, any>> | null | null,
-): TType | null | null;
+  fragmentType: FragmentType<DocumentTypeDecoration<TType, any>> | null | undefined,
+): TType | null | undefined;
 // return array of non-nullable if `fragmentType` is array of non-nullable
 export function useFragment<TType>(
   _documentNode: DocumentTypeDecoration<TType, any>,
@@ -27,16 +27,16 @@ export function useFragment<TType>(
 // return array of nullable if `fragmentType` is array of nullable
 export function useFragment<TType>(
   _documentNode: DocumentTypeDecoration<TType, any>,
-  fragmentType: ReadonlyArray<FragmentType<DocumentTypeDecoration<TType, any>>> | null | null,
-): ReadonlyArray<TType> | null | null;
+  fragmentType: ReadonlyArray<FragmentType<DocumentTypeDecoration<TType, any>>> | null | undefined,
+): ReadonlyArray<TType> | null | undefined;
 export function useFragment<TType>(
   _documentNode: DocumentTypeDecoration<TType, any>,
   fragmentType:
     | FragmentType<DocumentTypeDecoration<TType, any>>
     | ReadonlyArray<FragmentType<DocumentTypeDecoration<TType, any>>>
     | null
-    | null,
-): TType | ReadonlyArray<TType> | null | null {
+    | undefined,
+): TType | ReadonlyArray<TType> | null | undefined {
   return fragmentType as any;
 }
 
