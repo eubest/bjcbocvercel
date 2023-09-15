@@ -127,7 +127,7 @@ export async function getPage(handle: string): Promise<Page> {
   };
 }
 
-export async function getProduct(handle: string): Promise<Product | null> {
+export async function getProduct(handle: string): Promise<Product | undefined> {
   const saleorProduct = await saleorFetch({
     query: GetProductBySlugDocument,
     variables: {
@@ -164,7 +164,7 @@ const _getCategory = async (handle: string) =>
     })
   ).category;
 
-export async function getCollection(handle: string): Promise<Collection | null> {
+export async function getCollection(handle: string): Promise<Collection | undefined> {
   const saleorCollection = (await _getCollection(handle)) || (await _getCategory(handle));
 
   if (!saleorCollection) {
@@ -396,7 +396,7 @@ export async function getPages(): Promise<Page[]> {
   );
 }
 
-export async function getCart(cartId: string): Promise<Cart | null> {
+export async function getCart(cartId: string): Promise<Cart | undefined> {
   const saleorCheckout = await saleorFetch({
     query: GetCheckoutByIdDocument,
     variables: {
