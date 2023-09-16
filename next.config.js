@@ -5,7 +5,7 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    serverActions: true,
+    serverActions: false,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -22,7 +22,7 @@ module.exports = {
         protocol: 'https',
         hostname: 'prod.demo.saleor.cloud',
       },
-       {
+      {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
       },
