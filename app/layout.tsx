@@ -20,12 +20,12 @@ export const metadata = {
   },
   ...(TWITTER_CREATOR &&
     TWITTER_SITE && {
-      twitter: {
-        card: 'summary_large_image',
-        creator: TWITTER_CREATOR,
-        site: TWITTER_SITE,
-      },
-    }),
+    twitter: {
+      card: 'summary_large_image',
+      creator: TWITTER_CREATOR,
+      site: TWITTER_SITE,
+    },
+  }),
 };
 
 const inter = Inter({
@@ -34,7 +34,19 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
+async function loadData() {
+  // This is a mock function for demonstration purposes
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data loaded");
+    }, 1000);
+  });
+}
+
 export default async function RootLayout({ children }: { children: ReactNode }) {
+  const data = await loadData();
+  console.log(data); // This will log "Data loaded" after 1 second
+
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
