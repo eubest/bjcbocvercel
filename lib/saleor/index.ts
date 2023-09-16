@@ -492,12 +492,12 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
   return saleorCheckoutToVercelCart(saleorCheckout.checkoutLinesDelete.checkout);
 }
 
-// // eslint-disable-next-line no-unused-vars
-// export function getProductRecommendations(_productId: string): Promise<Product[]> {
-//   // @todo
-//   // tags: [TAGS.products],
-//   return [];
-// }
+// eslint-disable-next-line no-unused-vars
+export function getProductRecommendations(_productId: string): Promise<Product[]> {
+  // @todo
+  // tags: [TAGS.products],
+  return Promise.resolve([]);
+}
 
 // eslint-disable-next-line no-unused-vars
 export async function revalidate(req: NextRequest): Promise<Response> {
