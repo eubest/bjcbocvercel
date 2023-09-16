@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { ProductOption, ProductVariant } from 'lib/types';
 import { createUrl } from 'lib/utils';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 type Combination = {
   id: string;
@@ -20,6 +20,7 @@ export function VariantSelector({
   variants: ProductVariant[];
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const hasNoOptionsOrJustOneOption =
     !options.length || (options.length === 1 && options[0]?.values.length === 1);
