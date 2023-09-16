@@ -27343,7 +27343,7 @@ export type WebhookSubscriptionSubscription = {
         __typename: 'ProductVariantUpdated';
         productVariant?: { product: { id: string; slug: string } } | null;
       }
-    | {}
+    | Record<string | number | symbol, never>
     | null;
 };
 
