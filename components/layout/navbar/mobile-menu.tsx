@@ -18,12 +18,12 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (globalThis.innerWidth > 768) { // <-- Changed here
         setIsOpen(false);
       }
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    globalThis.addEventListener('resize', handleResize); // <-- Changed here
+    return () => globalThis.removeEventListener('resize', handleResize); // <-- Changed here
   }, [isOpen]);
 
   useEffect(() => {
