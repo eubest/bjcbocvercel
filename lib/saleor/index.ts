@@ -324,17 +324,17 @@ function flattenMenuItems(menuItems: null | undefined | MenuItemWithChildren[]):
         (item.collection
           ? `/search/${item.collection.slug}`
           : item.category
-          ? `/search/${item.category.slug}`
-          : '');
+            ? `/search/${item.category.slug}`
+            : '');
 
       return [
         ...(path
           ? [
-              {
-                path: path,
-                title: item.name,
-              },
-            ]
+            {
+              path: path,
+              title: item.name,
+            },
+          ]
           : []),
         ...flattenMenuItems(item.children),
       ];
@@ -358,8 +358,8 @@ export async function getProducts({
       sortBy: query
         ? sortKey || ProductOrderField.Rank
         : sortKey === ProductOrderField.Rank
-        ? ProductOrderField.Rating
-        : sortKey || ProductOrderField.Rating,
+          ? ProductOrderField.Rating
+          : sortKey || ProductOrderField.Rating,
       sortDirection: reverse ? OrderDirection.Desc : OrderDirection.Asc,
     },
     tags: [TAGS.products],
@@ -493,7 +493,7 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
 }
 
 // eslint-disable-next-line no-unused-vars
-export async function getProductRecommendations(_productId: string): Promise<Product[]> {
+export function getProductRecommendations(_productId: string): Promise<Product[]> {
   // @todo
   // tags: [TAGS.products],
   return [];

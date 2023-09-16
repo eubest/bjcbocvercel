@@ -34,7 +34,7 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-async function loadData() {
+function loadData() {
   // This is a mock function for demonstration purposes
   return new Promise((resolve) => {
     setTimeout(() => {

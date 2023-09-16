@@ -12,7 +12,7 @@ export const metadata = {
   },
 };
 
-async function fetchData() {
+function fetchData() {
   // This is a mock function for demonstration purposes
   return new Promise((resolve) => {
     setTimeout(() => {
