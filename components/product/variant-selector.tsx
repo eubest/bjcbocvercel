@@ -20,6 +20,7 @@ export function VariantSelector({
   variants: ProductVariant[];
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const hasNoOptionsOrJustOneOption =
     !options.length || (options.length === 1 && options[0]?.values.length === 1);
@@ -83,7 +84,7 @@ export function VariantSelector({
           };
 
           return (
-            <DynamicTag
+            <button
               key={value}
               aria-disabled={!isAvailableForSale}
               href={optionUrl}
@@ -101,7 +102,7 @@ export function VariantSelector({
               {...dynamicProps}
             >
               {value}
-            </DynamicTag>
+            </button>
           );
         })}
       </dd>
