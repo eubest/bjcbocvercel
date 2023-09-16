@@ -21,8 +21,8 @@ export default function FilterItemDropdown({ list }: { list: ListItem[] }) {
       }
     };
 
-    window.addEventListener('click', handleClickOutside);
-    return () => window.removeEventListener('click', handleClickOutside);
+    globalThis.addEventListener('click', handleClickOutside); // <-- Changed here
+    return () => globalThis.removeEventListener('click', handleClickOutside); // <-- Changed here
   }, []);
 
   useEffect(() => {
