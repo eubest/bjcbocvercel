@@ -41,8 +41,9 @@ export function useFragment<TType>(
     | null
     | undefined,
 ): TType | ReadonlyArray<TType> | null | undefined {
-  return fragmentType as GenericType;
+  return fragmentType as TType | ReadonlyArray<TType> | null | undefined;
 }
+
 
 export function makeFragmentData<
   F extends DocumentTypeDecoration<GenericType, GenericType>,
