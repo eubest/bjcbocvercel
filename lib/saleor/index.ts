@@ -493,7 +493,7 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
 }
 
 // eslint-disable-next-line no-unused-vars
-export async function getProductRecommendations(productId: string): Promise<Product[]> {
+export async function getProductRecommendations(_productId: string): Promise<Product[]> {
   // @todo
   // tags: [TAGS.products],
   return [];
