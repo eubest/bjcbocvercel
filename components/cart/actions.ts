@@ -63,7 +63,7 @@ export const updateItemQuantity = async ({
         quantity,
       },
     ]);
-  } catch (e) {
+  } catch (_e) {
     return 'Error updating item quantity';
   }
 };
