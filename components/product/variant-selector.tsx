@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { ProductOption, ProductVariant } from 'lib/types';
 import { createUrl } from 'lib/utils';
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 type Combination = {
   id: string;
@@ -20,7 +20,6 @@ export function VariantSelector({
   variants: ProductVariant[];
 }) {
   const pathname = usePathname();
-  const router = useRouter();
   const searchParams = useSearchParams();
   const hasNoOptionsOrJustOneOption =
     !options.length || (options.length === 1 && options[0]?.values.length === 1);
@@ -84,13 +83,10 @@ export function VariantSelector({
           };
 
           return (
-            <button
+            <DynamicTag
               key={value}
               aria-disabled={!isAvailableForSale}
-              disabled={!isAvailableForSale}
-              onClick={() => {
-                router.replace(optionUrl, { scroll: false });
-              }}
+              href={optionUrl}
               title={`${option.name} ${value}${!isAvailableForSale ? ' (Out of Stock)' : ''}`}
               className={clsx(
                 'flex min-w-[48px] items-center justify-center rounded-full border bg-neutral-100 px-2 py-1 text-sm dark:border-neutral-800 dark:bg-neutral-900',
@@ -105,7 +101,7 @@ export function VariantSelector({
               {...dynamicProps}
             >
               {value}
-            </button>
+            </DynamicTag>
           );
         })}
       </dd>
