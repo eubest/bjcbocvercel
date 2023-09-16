@@ -2,12 +2,12 @@ import type { ResultOf, DocumentTypeDecoration } from '@graphql-typed-document-n
 
 export type FragmentType<TDocumentType extends DocumentTypeDecoration<any, any>> =
   TDocumentType extends DocumentTypeDecoration<infer TType, any>
-  ? TType extends { ' $fragmentName'?: infer TKey }
-  ? TKey extends string
-  ? { ' $fragmentRefs'?: { [key in TKey]: TType } }
-  : never
-  : never
-  : never;
+    ? TType extends { ' $fragmentName'?: infer TKey }
+      ? TKey extends string
+        ? { ' $fragmentRefs'?: { [key in TKey]: TType } }
+        : never
+      : never
+    : never;
 
 // return non-nullable if `fragmentType` is non-nullable
 export function useFragment<TType>(
