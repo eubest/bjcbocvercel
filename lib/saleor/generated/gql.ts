@@ -192,5 +192,5 @@ export function graphql(
 ): typeof import('./graphql').WebhookSubscriptionDocument;
 
 export function graphql(source: string) {
-  return (documents as any)[source] ?? {};
+  return (documents as unknown)[source] ?? {};
 }
