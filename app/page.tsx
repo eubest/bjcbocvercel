@@ -12,7 +12,19 @@ export const metadata = {
   },
 };
 
+async function fetchData() {
+  // This is a mock function for demonstration purposes
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data fetched");
+    }, 1000);
+  });
+}
+
 export default async function HomePage() {
+  const data = await fetchData();
+  console.log(data); // This will log "Data fetched" after 1 second
+
   return (
     <>
       <ThreeItemGrid />
